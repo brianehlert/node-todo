@@ -1,16 +1,16 @@
 pipeline {
     agent any
     environment {
-        APPS_NAME = "node-todo-apps"
+        APPS_NAME = "node-todo"
         FQDN = "todo.foobz.com.au"
-        DOCKER_IMAGE_NAME = "foobz/node-todo-apps"
+        DOCKER_IMAGE_NAME = "foobz/node-todo"
     }
     stages {
         stage('Build') {
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
-                //archiveArtifacts artifacts: 'dist/node-todo-apps.zip'
+                //archiveArtifacts artifacts: 'dist/node-todo.zip'
             }
         }
         stage('Build Docker Image') {
@@ -47,7 +47,7 @@ pipeline {
                 milestone(1)
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig_cloud1',
-                    configs: 'node-todo-apps-kube.yaml',
+                    configs: 'node-todo-kube.yaml',
                     enableConfigSubstitution: true
                 )
             }
@@ -60,7 +60,7 @@ pipeline {
                 milestone(2)
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig_cloud2',
-                    configs: 'node-todo-apps-kube.yaml',
+                    configs: 'node-todo-kube.yaml',
                     enableConfigSubstitution: true
                 )
             }
