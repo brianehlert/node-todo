@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        APPS_NAME = "f5-demo-apps10"
-        FQDN = "app100.foobz.com.au"
+        APPS_NAME = "node-todo-apps"
+        FQDN = "todo.foobz.com.au"
         DOCKER_IMAGE_NAME = "foobz/node-todo-apps"
     }
     stages {
