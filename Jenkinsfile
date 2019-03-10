@@ -65,5 +65,15 @@ pipeline {
                 )
             }
         }
+        stage('DeployAppServices - AS3') {
+            steps {
+                // Deploy Application Services
+                milestone(3)
+                build (job: "bigip-app-services-as3", 
+                       parameters: 
+                       [string(name: 'FQDN', value: FQDN),
+                       string(name: 'APPS_NAME', value: APPS_NAME)])
+            }
+        }
     }
 }
