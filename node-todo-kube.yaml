@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: node-todo-apps
+  name: node-todo
 spec:
   type: NodePort
   selector:
-    app: node-todo-apps
+    app: node-todo
   ports:
   - protocol: TCP
     port: 8080
@@ -16,21 +16,21 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: node-todo-apps-deployment
+  name: node-todo-deployment
   labels:
-    app: node-todo-apps
+    app: node-todo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-todo-apps
+      app: node-todo
   template:
     metadata:
       labels:
-        app: node-todo-apps
+        app: node-todo
     spec:
       containers:
-      - name: node-todo-apps
+      - name: node-todo
         image: foobz/node-todo:latest
         ports:
         - containerPort: 8080
