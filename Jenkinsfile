@@ -67,7 +67,7 @@ pipeline {
         }
         stage('DeployAppServices - AS3') {
             steps {
-                // Deploy AppServices with AS3 AO
+                // Deploy AppServices with AS3 Automation
                 milestone(3)
                 build (job: "bigip-app-services-as3", 
                        parameters: 
