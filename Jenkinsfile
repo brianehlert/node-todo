@@ -69,7 +69,7 @@ pipeline {
             steps {
                 // Deploy AppServices with F5 AS3 AO Toolchain
                 milestone(3)
-                build (job: "bigip-app-services-as3", 
+                build (job: "ansible-as3-app-services", 
                        parameters: 
                        [string(name: 'FQDN', value: FQDN),
                        string(name: 'APPS_NAME', value: APPS_NAME)])
